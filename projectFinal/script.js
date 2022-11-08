@@ -15,9 +15,8 @@
     let y = Math.round(random(0, side - 1))
     if (matrix[y][x] == 0) {
 
-        let gr = new Grass(x,y)
+        let gr = new Grass(x,y,1)
         grassArr.push(gr)
-        matrix[y][x] = 1;
     }
     }
 
@@ -27,7 +26,7 @@
     let x = Math.round(random(0, side - 1))
     let y = Math.round(random(0, side - 1))
     if (matrix[y][x] == 0) {
-        let Xt = new Xotaker(x,y)
+        let Xt = new GrassEater(x,y, 2)
         xotakerArr.push(Xt)
         matrix[y][x] = 2;
 
@@ -90,36 +89,36 @@ function draw(){
 
 
 
-     console.log(grassArr.length)
+
     for(let i in grassArr){
         grassArr[i].mul()
     }
-     console.log(grassMutantArr.length)
+     
     for(let i in grassMutantArr){
         grassMutantArr[i].mul()
     }
-     console.log(xotakerArr.length)
+     
     for(let i in xotakerArr){
         xotakerArr[i].move()
     }
-    console.log(xotakerMutantArr.length)
+    
     for(let i in xotakerMutantArr){
         xotakerMutantArr[i].move()
     }
-     console.log(gishatichArr.length)
+    
     for(let i in gishatichArr) {
         gishatichArr[i].move()
     }
-     console.log(gishatichMutantArr.length)
+     
     for(let i in gishatichMutantArr) {
         gishatichMutantArr[i].move()
     }
-     console.log(mardArr.length)
+    
     for(let i in mardArr) {
         mardArr[i].move()
     }
 
-    console.log("--------=---");
+
     
 
     

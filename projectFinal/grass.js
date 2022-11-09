@@ -27,15 +27,19 @@ class Grass extends LivingCreature{
 }
 
 class GrassMutant extends LivingCreature{
-    
+    constructor(x, y, index) {
+
+        super(x, y, index);
+        this.index = 5
+    }
     mul() {
         this.multiply++;  
         var newCell = random(this.chooseCell(0));   
-        let mutantIndex = 5  
+ 
   
 
         if(this.multiply >= 1000000000 && newCell) {                             
-                var newGrassMutant = new GrassMutant(newCell[0],newCell[1], mutantIndex);        
+                var newGrassMutant = new GrassMutant(newCell[0],newCell[1],  this.index);        
                 grassMutantArr.push(newGrassMutant);       
                 matrix[newCell[1]][newCell[0]] = this.index;        
                 this.multiply = 0;                  

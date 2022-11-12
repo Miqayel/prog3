@@ -124,7 +124,7 @@ class GrassEater extends LivingCreature {
         
         let mutacia = getRandInt(1, 10)
         if (mutacia == 1 && newCell) {
-            var newGrassEaterMutant = new GrassEaterMutant(newCell[0], newCell[1]);
+            var newGrassEaterMutant = new GrassEaterMutant(newCell[0], newCell[1], 6);
             xotakerMutantArr.push(newGrassEaterMutant);
             matrix[newCell[1]][newCell[0]] = 6;
             
@@ -149,7 +149,7 @@ class GrassEaterMutant extends LivingCreature {
 
         super(x, y, index);
         this.energy = 8;
-        this.index = 6
+   
 
     }
 

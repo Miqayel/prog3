@@ -39,7 +39,7 @@
         let y = Math.round(random(0, side - 1))
         if (matrix[y][x] == 0) {
 
-            let gt = new gishatich(x,y)
+            let gt = new Gishatich(x,y,3)
             gishatichArr.push(gt)
             matrix[y][x] = 3;
         }
@@ -50,7 +50,7 @@
             let y = Math.round(random(0, side - 1))
             if (matrix[y][x] == 0) {
 
-                let mt = new Mard(x,y)
+                let mt = new Mard(x,y,4)
                 mardArr.push(mt)
                 matrix[y][x] = 4;
             }
@@ -77,7 +77,7 @@ zeroCount = []
 
 function setup(){
     frameRate(20)
-    generateMatrix(60, 48, 40, 30, 5)
+    generateMatrix(60, 48, 120, 30, 5)
     createCanvas( side * matrix[0].length   , side * matrix.length )
     background("grey")
 

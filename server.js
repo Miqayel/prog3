@@ -4,13 +4,15 @@ var Grass = require('./modules/grass')
 var Gishatich = require('./modules/gishatich')
 var GrassEater = require('./modules/grassEater')
 var Mard = require('./modules/mard')
+var script = require('./modules/script.js')
+
+matrix = [];
+
 var app = express();
-
-var server = require('http').createServer(app);
-
+var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-var messages = [];
+
 
 app.use(express.static("./modules"));
 
@@ -22,41 +24,29 @@ res.redirect('index.html');
 
 server.listen(3000);
 
-io.on('connection', function (socket) {
 
-    for(var i in messages) {
-    
-    socket.emit("display message", messages[i]);
-    
-    }
-    
-    socket.on("send message", function (data) {
-    
-    messages.push(data);
-    
-    io.sockets.emit("display message", data);
-    
-    });
-    
-    });
 
 
     //*************** */
 
+    function random (arr) {
+        return arr[Math.floor(Math.random()*arr.length)];
+        }
+        
+
 
     function generateMatrix(side, GrassCount, GrassEaterCount, GishatichCount, MardCount){
-        matrix = []
-        for (let i = 0; i < side; i++) {
-        let arr = []
-        matrix.push(arr)
-        for (let j = 0; j < side; j++) {
-        matrix[i].push(0)
+            var matrix = []
+            for (let i = 0; i < side; i++) {
+            matrix[i] = []
+            for (let j = 0; j < side; j++) {
+            matrix[i][j] = 0
         }
         }
         
         for (let i = 0; i < GrassCount; i++) {
-        let x = Math.round(random(0, side - 1))
-        let y = Math.round(random(0, side - 1))
+            let x = Math.floor(Math.random() * side)
+            let y = Math.floor(Math.random() * side)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 1;
             
@@ -66,8 +56,8 @@ io.on('connection', function (socket) {
         
     
         for (let i = 0; i < GrassEaterCount; i++) {
-        let x = Math.round(random(0, side - 1))
-        let y = Math.round(random(0, side - 1))
+            let x = Math.floor(Math.random() * side)
+            let y = Math.floor(Math.random() * side)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 2;
     
@@ -76,16 +66,16 @@ io.on('connection', function (socket) {
         }
     
         for (let i = 0; i < GishatichCount; i++) {
-            let x = Math.round(random(0, side - 1))
-            let y = Math.round(random(0, side - 1))
+            let x = Math.floor(Math.random() * side)
+            let y = Math.floor(Math.random() * side)
             if (matrix[y][x] == 0) {
                 matrix[y][x] = 3;
             }
             }
     
             for (let i = 0; i < MardCount; i++) {
-                let x = Math.round(random(0, side - 1))
-                let y = Math.round(random(0, side - 1))
+                let x = Math.floor(Math.random() * side)
+                let y = Math.floor(Math.random() * side)
                 if (matrix[y][x] == 0) {
                     matrix[y][x] = 4;
                 }
@@ -95,6 +85,7 @@ io.on('connection', function (socket) {
         }
 
         matrix =  generateMatrix(60, 48, 120, 30, 5)
+
         io.sockets.emit('send matrix', matrix)
         // console.log(matrix);
         var side = 11
@@ -109,15 +100,12 @@ io.on('connection', function (socket) {
         
         gishatichArr = []
         gishatichMutantArr = []
+
         mardArr = []
         
         zeroCount = []
         
-        Grass = require("./Grass")
-        GrassEater = require("./GrassEater")
-        Predator = require("./Predator")
-        Zombie = require("./Zombie")
-        Flower = require("./Flower")
+       
         
         function createObject(matrix) {
             for (var y = 0; y < matrix.length; y++) {
@@ -171,7 +159,7 @@ io.on('connection', function (socket) {
             for(let i in mardArr) {
                 mardArr[i].move()
             }
-        
+            script.drawMatrix(matrix);
         io.sockets.emit("send matrix", matrix);
         }
         setInterval(game, 1000)

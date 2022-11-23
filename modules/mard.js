@@ -60,7 +60,7 @@ module.exports = class Mard extends LivingCreature {
         else
         {
             let datarkArr = this.chooseCell(0)
-            let emptyCell = random(datarkArr)
+            let emptyCell =  super.random(datarkArr)
             if (emptyCell) {
                 let x = emptyCell[0]
                 let y = emptyCell[1]
@@ -80,9 +80,9 @@ module.exports = class Mard extends LivingCreature {
     eat(){
 
     
-        let food1 = random(this.chooseCell(1));
-        let food2 = random(this.chooseCell(2));
-        let food3 = random(this.chooseCell(3));
+        let food1 =  super.random(this.chooseCell(1));
+        let food2 =  super.random(this.chooseCell(2));
+        let food3 =  super.random(this.chooseCell(3));
         if (food1) {
             var newX = food1[0];
             var newY = food1[1];
@@ -152,7 +152,7 @@ module.exports = class Mard extends LivingCreature {
     }
 
     mul(){
-        var newCell = random(this.chooseCell(0));
+        var newCell =  super.random(this.chooseCell(0));
         console.log("bax");
 
         if (newCell) {

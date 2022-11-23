@@ -53,7 +53,7 @@ module.exports = class GrassEater extends LivingCreature {
         else
         {
             food = this.chooseCell(0)
-            let emptyCell = random(food)
+            let emptyCell =  super.random(food)
             if (emptyCell) {
                 let x = emptyCell[0]
                 let y = emptyCell[1]
@@ -71,8 +71,8 @@ module.exports = class GrassEater extends LivingCreature {
 
     }
     eat(){
-        var food = random(this.chooseCell(1));
-        var food2 = random(this.chooseCell(5))
+        var food =  super.random(this.chooseCell(1));
+        var food2 =  super.random(this.chooseCell(5))
         if (food) {
             var newX = food[0];
             var newY = food[1];
@@ -123,9 +123,9 @@ module.exports = class GrassEater extends LivingCreature {
     }
 
     mul(){
-        var newCell = random(this.chooseCell(0));
+        var newCell =  super.random(this.chooseCell(0));
         
-        let mutacia = getRandInt(1, 10)
+        let mutacia =  super.getRandInt(1, 10)
         if (mutacia == 1 && newCell) {
             var newGrassEaterMutant = new GrassEaterMutant(newCell[0], newCell[1], 6);
             xotakerMutantArr.push(newGrassEaterMutant);
@@ -199,7 +199,7 @@ class GrassEaterMutant extends LivingCreature {
         else
         {
             food = this.chooseCell(0)
-            let emptyCell = random(food)
+            let emptyCell =  super.random(food)
             if (emptyCell) {
                 let x = emptyCell[0]
                 let y = emptyCell[1]
@@ -217,8 +217,8 @@ class GrassEaterMutant extends LivingCreature {
 
     }
     eat(){
-        var food = random(this.chooseCell(1));
-        var food2 = random(this.chooseCell(5))
+        var food =  super.random(this.chooseCell(1));
+        var food2 =  super.random(this.chooseCell(5))
         if (food) {
             var newX = food[0];
             var newY = food[1];
@@ -269,7 +269,7 @@ class GrassEaterMutant extends LivingCreature {
     }
 
     mul(){
-        var newCell = random(this.chooseCell(0));
+        var newCell =  super.random(this.chooseCell(0));
         
         if (newCell) {
             var newGrassEaterMutant = new GrassEaterMutant(newCell[0], newCell[1]);

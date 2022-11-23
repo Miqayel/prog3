@@ -3,8 +3,8 @@ module.exports = class Grass extends LivingCreature{
     
     mul() {
         this.multiply++;  
-        var newCell = random(this.chooseCell(0));   
-        let mutacia = getRandInt(1, 10)  
+        var newCell = super.random(this.chooseCell(0));   
+        let mutacia = super.getRandInt(1, 10)  
         let mutantIndex = 5  
   
 
@@ -35,7 +35,7 @@ class GrassMutant extends LivingCreature{
     }
     mul() {
         this.multiply++;  
-        var newCell = random(this.chooseCell(0));   
+        var newCell =  super.random(this.chooseCell(0));   
  
   
 

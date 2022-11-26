@@ -1,0 +1,8 @@
+.SeasonBar {
+    width: 400px;
+    float: right;
+}
+
+.SeasonBar h2 {
+    text-align: center;
+}

@@ -2,7 +2,7 @@ index = 0
 module.exports = class LivingCreature {
 
     constructor(x, y, index) {
-
+        this.LivingCreatureSeason = "spring";
         this.x = x;
         this.y = y;
         this.multiply = 0;
@@ -47,6 +47,10 @@ module.exports = class LivingCreature {
     getRandInt(min, max) {
         var z = Math.floor(Math.random() * (max - min + 1)) + min;
         return z;
+    }
+
+    changeSeasonForLivingCreature (season) {
+        this.LivingCreatureSeason = season;
     }
 }
 

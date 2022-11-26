@@ -1,10 +1,14 @@
 var socket = io();
 
-
-
-
 var side = 11
 
+function changeSeason(season) {
+    season = "winter";
+}
+
+window.onclick = changeSeason;
+
+console.log(season);
 function setup() {
   
 }
@@ -16,7 +20,6 @@ function draww(matrix) {
     frameRate(20)
     createCanvas(side * matrix[0].length, side * matrix.length)
     background("grey")
-    console.log("elav");
 
 
     for (let y = 0; y < matrix.length; y++) {
@@ -65,4 +68,6 @@ function draww(matrix) {
 
 }
 
+
 socket.on('send matrix', draww);
+socket.on('send season', changeSeason);

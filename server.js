@@ -23,17 +23,22 @@ server.listen(3000);
 
 //*************** */
 
+
 function random(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-matrix = [];
 
- LivingCreature = require('./modules/LivingCreature')
- Grass = require('./modules/grass')
- Gishatich = require('./modules/gishatich')
- GrassEater = require('./modules/grassEater')
- Mard = require('./modules/mard')
+
+matrix = [];
+season = "spring";
+
+
+LivingCreature = require('./modules/LivingCreature')
+Grass = require('./modules/grass')
+Gishatich = require('./modules/gishatich')
+GrassEater = require('./modules/grassEater')
+Mard = require('./modules/mard')
 
 function generateMatrix(side, GrassCount, GrassEaterCount, GishatichCount, MardCount) {
     // var matrix = []
@@ -134,6 +139,10 @@ function createObject(matrix) {
 function game() {
     for (let i in grassArr) {
         grassArr[i].mul()
+        if (grassArr[i].LivingCreatureSeason !== season) {
+            grassArr[i].changeSeasonForLivingCreature(season)
+            console.log(grassArr[i].LivingCreatureSeason)
+        }
     }
 
     for (let i in grassMutantArr) {

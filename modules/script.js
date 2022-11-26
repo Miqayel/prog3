@@ -6,19 +6,17 @@ var socket = io();
 var side = 11
 
 function setup() {
-    frameRate(20)
-    createCanvas(side * matrix[0].length, side * matrix.length)
-    background("grey")
-    console.log("elav");
-
-
+  
 }
 
 function draww(matrix) {
 
 
 
-
+    frameRate(20)
+    createCanvas(side * matrix[0].length, side * matrix.length)
+    background("grey")
+    console.log("elav");
 
 
     for (let y = 0; y < matrix.length; y++) {

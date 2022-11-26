@@ -101,7 +101,6 @@ module.exports = class Mard extends LivingCreature {
             this.y = newY;
             this.x = newX;
             this.energy += 2;
-            console.log(this.energy);
         }
         else if (food2) {
             var newX = food2[0];
@@ -153,7 +152,7 @@ module.exports = class Mard extends LivingCreature {
 
     mul(){
         var newCell =  super.random(this.chooseCell(0));
-        console.log("bax");
+
 
         if (newCell) {
             var newMard = new Mard(newCell[0], newCell[1], 4);

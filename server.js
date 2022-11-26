@@ -162,7 +162,7 @@ function game() {
 
     io.sockets.emit("send matrix", matrix);
 }
-setInterval(game, 1000)
+setInterval(game, 200)
 
 io.on('connection', function (socket) {
     createObject(matrix)

@@ -1,25 +1,41 @@
 var socket = io();
 
 var side = 11
+winterButton = document.getElementById('winterButton')
+summerButton = document.getElementById('summerButton')
+
+winterButton.onclick = changeSeason;
+//summerButton.onclick = changeSeasonSummer;
 
 function changeSeason(season) {
-    season = "winter";
+    season = "winter"
+    console.log("inside",season);
+    
+
+    
+   // season = "winter";
 }
 
-window.onclick = changeSeason;
+// function changeSeasonSummer() {
+//     season = "summer"
 
-console.log(season);
+
+// }
+
+
+
+//console.log(season);
 function setup() {
   
+    frameRate(20)
+    createCanvas(side * 50, side * 50)
+    background("grey")
 }
 
 function draww(matrix) {
 
 
 
-    frameRate(20)
-    createCanvas(side * matrix[0].length, side * matrix.length)
-    background("grey")
 
 
     for (let y = 0; y < matrix.length; y++) {
@@ -71,3 +87,4 @@ function draww(matrix) {
 
 socket.on('send matrix', draww);
 socket.on('send season', changeSeason);
+//socket.on('send season', changeSeasonSummer);

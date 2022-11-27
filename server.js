@@ -134,6 +134,7 @@ function createObject(matrix) {
         }
     }
     io.sockets.emit('send matrix', matrix)
+    io.sockets.emit("send season", season);
 }
 
 function game() {
@@ -141,7 +142,7 @@ function game() {
         grassArr[i].mul()
         if (grassArr[i].LivingCreatureSeason !== season) {
             grassArr[i].changeSeasonForLivingCreature(season)
-            console.log(grassArr[i].LivingCreatureSeason)
+
         }
     }
 
@@ -170,6 +171,7 @@ function game() {
     }
 
     io.sockets.emit("send matrix", matrix);
+
 }
 setInterval(game, 200)
 

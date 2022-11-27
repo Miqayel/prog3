@@ -2,7 +2,6 @@ index = 0
 module.exports = class LivingCreature {
 
     constructor(x, y, index) {
-        this.LivingCreatureSeason = "spring";
         this.x = x;
         this.y = y;
         this.multiply = 0;

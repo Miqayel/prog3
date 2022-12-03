@@ -32,6 +32,7 @@ function random(arr) {
 
 matrix = [];
 season = "spring";
+seasonArr = ["spring", "summer", "autumn", "winter"]
 
 
 LivingCreature = require('./modules/LivingCreature')
@@ -92,6 +93,7 @@ function generateMatrix(side, GrassCount, GrassEaterCount, GishatichCount, MardC
 matrix = generateMatrix(60, 48, 120, 30, 5)
 
 io.sockets.emit('send matrix', matrix)
+io.sockets.emit("send season", season);
 // console.log(matrix);
 var side = 11
 
@@ -133,17 +135,14 @@ function createObject(matrix) {
             }
         }
     }
-    io.sockets.emit('send matrix', matrix)
+    io.sockets.emit('send matrix', matrix);
     io.sockets.emit("send season", season);
 }
 
 function game() {
     for (let i in grassArr) {
         grassArr[i].mul()
-        if (grassArr[i].LivingCreatureSeason !== season) {
-            grassArr[i].changeSeasonForLivingCreature(season)
-
-        }
+   
     }
 
     for (let i in grassMutantArr) {
@@ -174,6 +173,20 @@ function game() {
 
 }
 setInterval(game, 200)
+
+var seasonI = 0;
+function changeSeason () {
+    if (seasonI < 3) {
+        seasonI++;
+        season = seasonArr[seasonI];   
+    }
+    else {
+        seasonI = 0;
+        season = seasonArr[seasonI];
+    }
+    io.sockets.emit("send season", season);
+}
+setInterval(changeSeason, 5000)
 
 io.on('connection', function (socket) {
     createObject(matrix)

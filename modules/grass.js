@@ -2,7 +2,20 @@ let LivingCreature = require('./LivingCreature')
 
 module.exports = class Grass extends LivingCreature{
     
+    
     mul() {
+        if (season == "spring") {
+            var multiplySem = 2;
+        }
+        else if (season == "summer") {
+            var multiplySem = 1;
+        }
+        else if (season == "autumn") {
+            var multiplySem = 4;
+        }
+        else if (season == "winter") {
+            var multiplySem = 10;
+        }
         //console.log(season);
         this.multiply++;  
         var newCell = super.random(this.chooseCell(0));   
@@ -10,9 +23,7 @@ module.exports = class Grass extends LivingCreature{
         let mutantIndex = 5  
   
 
-        if(this.multiply >= 2 && newCell) {  
-             
-            
+        if(this.multiply >= multiplySem && newCell) {      
                 if (mutacia == 1) { 
                     var newGrassMutant = new GrassMutant(newCell[0],newCell[1], mutantIndex);       
                     grassMutantArr.push(newGrassMutant);       
@@ -24,7 +35,7 @@ module.exports = class Grass extends LivingCreature{
                     matrix[newCell[1]][newCell[0]] = this.index;        
                     this.multiply = 0;
                 }
-            }  
+        }  
             
             
         

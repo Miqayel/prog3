@@ -18,7 +18,7 @@ function seasonCatcher(season) {
 
 function setup() {
   
-    frameRate(20)
+    frameRate(60)
     createCanvas(side * 50, side * 50)
     background("grey")
 }

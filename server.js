@@ -1,5 +1,5 @@
 var express = require('express');
-
+var fs = require('fs');
 
 
 var app = express();
@@ -112,6 +112,7 @@ mardArr = []
 
 zeroCount = []
 
+grassBornStatick = 0;
 
 
 function createObject(matrix) {
@@ -139,10 +140,13 @@ function createObject(matrix) {
     io.sockets.emit("send season", season);
 }
 
+var statistikaText = "grassBorn";
+
 function game() {
     for (let i in grassArr) {
         grassArr[i].mul()
-   
+        grassBornStatick++
+        statistikaTextJson = "{" + JSON.stringify(statistikaText) + ":" + String(grassBornStatick)  + "}";
     }
 
     for (let i in grassMutantArr) {
@@ -187,6 +191,14 @@ function changeSeason () {
     io.sockets.emit("send season", season);
 }
 setInterval(changeSeason, 5000)
+
+
+
+
+function Statistika() {
+    fs.writeFileSync("statistika.json", statistikaTextJson);
+}
+setInterval(Statistika, 12000)
 
 io.on('connection', function (socket) {
     createObject(matrix)

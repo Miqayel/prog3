@@ -14,7 +14,7 @@ module.exports = class Grass extends LivingCreature{
             var multiplySem = 4;
         }
         else if (season == "winter") {
-            var multiplySem = 10;
+            var multiplySem = 6;
         }
         //console.log(season);
         this.multiply++;  

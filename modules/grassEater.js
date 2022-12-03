@@ -43,7 +43,19 @@ module.exports = class GrassEater extends LivingCreature {
         if(food.length > 0 || foodMutant.length > 0)
         {
             this.eat()
-            if (this.energy >= 20) {
+                if (season == "spring") {
+                    var multiplySem = 20;
+                }
+                else if (season == "summer") {
+                    var multiplySem = 15;
+                }
+                else if (season == "autumn") {
+                    var multiplySem = 25;
+                }
+                else if (season == "winter") {
+                    var multiplySem = 30;
+                }
+            if (this.energy >= multiplySem) {
                 
                 this.mul()
             }
@@ -124,7 +136,7 @@ module.exports = class GrassEater extends LivingCreature {
 
     mul(){
         var newCell =  super.random(this.chooseCell(0));
-        
+   
         let mutacia =  super.getRandInt(1, 10)
         if (mutacia == 1 && newCell) {
             var newGrassEaterMutant = new GrassEaterMutant(newCell[0], newCell[1], 6);

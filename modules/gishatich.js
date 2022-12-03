@@ -41,7 +41,19 @@ module.exports = class Gishatich extends LivingCreature {
         if(food.length > 0 || foodMutant.length > 0)
         {
             this.eat()
-            if (this.energy >= 20) {
+                if (season == "spring") {
+                    var multiplySem = 15;
+                }
+                else if (season == "summer") {
+                    var multiplySem = 10;
+                }
+                else if (season == "autumn") {
+                    var multiplySem = 20;
+                }
+                else if (season == "winter") {
+                    var multiplySem = 30;
+                }
+            if (this.energy >= multiplySem) {
                 
                 this.mul()
             }

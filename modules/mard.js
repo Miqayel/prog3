@@ -51,7 +51,19 @@ module.exports = class Mard extends LivingCreature {
         if(food1Arr.length > 0 || food2Arr.length > 0 || food3Arr.length > 0)
         {
             this.eat()
-            if (this.energy >= 30) {                
+                if (season == "spring") {
+                    var multiplySem = 35;
+                }
+                else if (season == "summer") {
+                    var multiplySem = 25;
+                }
+                else if (season == "autumn") {
+                    var multiplySem = 35;
+                }
+                else if (season == "winter") {
+                    var multiplySem = 45;
+                }
+            if (this.energy >= multiplySem) {                
                 this.mul()
             }
         }
